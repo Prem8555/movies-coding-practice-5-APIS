@@ -17,8 +17,8 @@ let db=null;
 const initializeDbAndServer=async () => {
     try {
         open({
-            filename:dbPath;
-            driver:sqlite3.Database;
+            filename:dbPath,
+            driver:sqlite3.Database,
 
         });
         app.listen(2000, () => {
@@ -36,7 +36,7 @@ const initializeDbAndServer=async () => {
 initializeDbAndServer();
 
 
-app.get("/movies/", (request,response) => {
+app.get("/movies/", async (request,response) => {
 
     const movieNames=`
     SELECT *
