@@ -43,7 +43,7 @@ app.get("/movies/", async (request,response) => {
     FROM 
     movie;`;
 
-    movies= await db.all(movieNames);
+   const movies= await db.all(movieNames);
     response.send(movies);
 
 });
