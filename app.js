@@ -177,8 +177,5 @@ app.get("/directors/:directorId/movies/", async (request, response) => {
 
 module.exports = app;
 =======
-   const movies= await db.all(movieNames);
-    response.send(movies);
-
-});
+  
 >>>>>>> aa337f140b70ace61b7c582d9dde3c25144d0dd7
