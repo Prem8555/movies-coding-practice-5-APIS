@@ -14,6 +14,7 @@ const dbPath = path.join(__dirname, "moviesData.db");
 
 let db = null;
 
+<<<<<<< HEAD
 const initializeDbAndServer = async () => {
   try {
     db = await open({
@@ -27,6 +28,25 @@ const initializeDbAndServer = async () => {
     console.log(`Error msg: ${error.message}`);
     process.exit(1);
   }
+=======
+const initializeDbAndServer=async () => {
+    try {
+        open({
+            filename:dbPath,
+            driver:sqlite3.Database,
+
+        });
+        app.listen(2000, () => {
+            console.log("Server Running at 2000");
+
+        });
+
+    } catch(error) {
+      console.log(`Error msg: ${error.message}`);
+      process.exit(1);
+
+    }
+>>>>>>> aa337f140b70ace61b7c582d9dde3c25144d0dd7
 };
 
 initializeDbAndServer();
@@ -40,12 +60,16 @@ const convertMovieDbObjectToResponseObject = (eachObject) => {
   };
 };
 
+<<<<<<< HEAD
 const convertDirectorDbObjectToResponseObject = (eachObject) => {
   return {
     directorId: eachObject.director_id,
     directorName: eachObject.director_name,
   };
 };
+=======
+app.get("/movies/", async (request,response) => {
+>>>>>>> aa337f140b70ace61b7c582d9dde3c25144d0dd7
 
 app.get("/movies/", async (request, response) => {
   const movieNames = `
@@ -54,6 +78,7 @@ app.get("/movies/", async (request, response) => {
     FROM 
     movie;`;
 
+<<<<<<< HEAD
   const movies = await db.all(movieNames);
   response.send(
     movies.map((name) => convertMovieDbObjectToResponseObject(name))
@@ -151,3 +176,9 @@ app.get("/directors/:directorId/movies/", async (request, response) => {
 });
 
 module.exports = app;
+=======
+   const movies= await db.all(movieNames);
+    response.send(movies);
+
+});
+>>>>>>> aa337f140b70ace61b7c582d9dde3c25144d0dd7
